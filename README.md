@@ -5,7 +5,7 @@ Affected firmwares: [A950RG V5.9c.4216_B20190710](http://totolink.net/data/uploa
 ![image](./images/A950RG_product.png)  
 ![image](./images/T10_product.png)  
 
-## Vulnerabilities description
+## Vulnerabilities Description  
 An attacker can execute arbitrary Linux OS commands via "setNTPCfg" and "setDiagnosisCfg" POST requests after login.   
 ### Modules Load  
 /bin/cste_sub: load_modules() function loads all libraries located in directory /lib/cste_modules:  
@@ -13,7 +13,7 @@ An attacker can execute arbitrary Linux OS commands via "setNTPCfg" and "setDiag
 ### Handlers Register  
 The handlers of "setNTPCfg" and "setDiagnosisCfg" are located in system.so. The module_init() function in system.so registers module handlers:  
 ![image](./images/module_init.png)  
-### Vulnerabilities
+### Vulnerabilities  
 In these handlers, there is no filter to avoid insecure characters, functions directly concatenate the imput strings to system commands.  
 As an example, handler of setDiagnosisCfg is as follows:  
 ![image](./images/diagnosis_func.png)  
